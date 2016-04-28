@@ -1,0 +1,9 @@
+{
+	"accessKey": "123456",
+	"databases": {
+		"dev": "root:root@(127.0.0.1:3306)",
+		"test": "root:root@(115.29.229.73:3307)",
+		"pre": "root:root@(127.0.0.1:3306)",
+		"release": "root:root@(127.0.0.1:3306)"
+	}
+}
