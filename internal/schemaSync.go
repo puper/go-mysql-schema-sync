@@ -266,7 +266,7 @@ run_sync:
 			continue
 		}
 		for _, sd := range sds {
-			sqls = append(sqls, sd.SQL+";")
+			sqls = append(sqls, sd.SQL)
 		}
 	} //end for
 
