@@ -37,6 +37,11 @@ func (sc *SchemaSync) GetNewTableNames() []string {
 	return newTables
 }
 
+func (sc *SchemaSync) Close() {
+	sc.SourceDb.Db.Close()
+	sc.DestDb.Db.Close()
+}
+
 func (sc *SchemaSync) getAlterDataByTable(table string) *TableAlterData {
 	alter := new(TableAlterData)
 	alter.Table = table
@@ -239,6 +244,7 @@ func GetSql(source, target string) []string {
 	cfg.Sync = false
 	cfg.Drop = true
 	sc := NewSchemaSync(cfg)
+	defer sc.Close()
 	newTables := sc.SourceDb.GetTableNames()
 	changedTables := make(map[string][]*TableAlterData)
 	for _, table := range newTables {
